@@ -1,0 +1,15 @@
+C:\WebAPI\BookStore\CommonLayer\bin\Debug\net8.0\CommonLayer.deps.json
+C:\WebAPI\BookStore\CommonLayer\bin\Debug\net8.0\CommonLayer.runtimeconfig.json
+C:\WebAPI\BookStore\CommonLayer\bin\Debug\net8.0\CommonLayer.dll
+C:\WebAPI\BookStore\CommonLayer\bin\Debug\net8.0\CommonLayer.pdb
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.csproj.AssemblyReference.cache
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.AssemblyInfoInputs.cache
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.AssemblyInfo.cs
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.csproj.CoreCompileInputs.cache
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.sourcelink.json
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.dll
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\refint\CommonLayer.dll
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.pdb
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\CommonLayer.genruntimeconfig.cache
+C:\WebAPI\BookStore\CommonLayer\obj\Debug\net8.0\ref\CommonLayer.dll
