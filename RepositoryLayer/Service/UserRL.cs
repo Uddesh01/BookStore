@@ -46,7 +46,7 @@ namespace RepositoryLayer.Service
             var user = dbContext.Users.SingleOrDefault(u => u.UserEmail == userEmail && u.UserPassword == encriptedPassword);
             if (user != null)
             {
-                return token.GenerateToken(user);
+                return token.GenerateToken(user,"User");
             }
             else
             {
@@ -77,7 +77,7 @@ namespace RepositoryLayer.Service
             UserEntity user = dbContext.Users.FirstOrDefault(u => u.UserEmail == userEmail);
             if (user != null)
             {
-                return token.GenerateToken(user);
+                return token.GenerateToken(user,"role");
             }
             else
             {

@@ -14,13 +14,10 @@ namespace RepositoryLayer.Entitys
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Book_ID { get; set; }
         public string BookName { get; set; }
-        public string Author {  get; set; }
-        public string Price { get; set; }
+        public string Author { get; set; }
+        public int Price { get; set; }
         public string BookImage { get; set; }
         public int Quantity { get; set; }
-        [ForeignKey("Users")]
-        public long UserId { get; set; }
-        public virtual UserEntity Users { get; set; }
         public DateTime AddedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
     }

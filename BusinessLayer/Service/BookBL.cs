@@ -1,15 +1,11 @@
 ﻿using BusinessLayer.Interface;
+using CommonLayer.Model;
 using RepositoryLayer.Entitys;
 using RepositoryLayer.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Service
 {
-    public  class BookBL:IBookBL
+    public class BookBL : IBookBL
     {
         private readonly IBookRL ibookRL;
         public BookBL(IBookRL bookRL)
@@ -24,6 +20,20 @@ namespace BusinessLayer.Service
         public IEnumerable<BooksEntity> GetAllBooks()
         {
             return ibookRL.GetAllBooks();
+        }
+
+        public BooksEntity AddBook(AddBookModel newBook)
+        {
+            return ibookRL.AddBook(newBook);
+        }
+
+        public bool DeleteBook(long bookId)
+        {
+            return ibookRL.DeleteBook(bookId);
+        }
+        public BooksEntity UpdateBook(BooksEntity updateBook,long bookId)
+        {
+            return ibookRL.UpdateBook(updateBook,bookId);
         }
     }
 }

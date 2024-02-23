@@ -14,14 +14,15 @@ namespace RepositoryLayer.JwtToke
             this.configuration = configuration;
         }
 
-        public string GenerateToken(UserEntity userEntity)
+        public string GenerateToken(UserEntity userEntity,string role)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
                 new Claim("Email",userEntity.UserEmail),
-                new Claim("UserId",userEntity.UserId.ToString())
+                new Claim("UserId",userEntity.UserId.ToString()),
+                new Claim(ClaimTypes.Role ,role)
             };
             var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
                 configuration["Jwt:Audience"],
