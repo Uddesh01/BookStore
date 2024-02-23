@@ -21,9 +21,9 @@ namespace BusinessLayer.Service
             return ibookRL.GetBookById(bookId);
         }
 
-        //public IEnumerable<BooksEntity> GetAllBooks()
-        //{
-        //    return ibookRL.GetAllBooks();
-        //}
+        public IEnumerable<BooksEntity> GetAllBooks()
+        {
+            return ibookRL.GetAllBooks();
+        }
     }
 }

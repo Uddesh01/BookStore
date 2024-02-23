@@ -10,6 +10,6 @@ namespace BusinessLayer.Interface
     public  interface IBookBL
     {
         public BooksEntity GetBookById(long bookId);
-        //public IEnumerable<BooksEntity> GetAllBooks();
+        public IEnumerable<BooksEntity> GetAllBooks();
     }
 }

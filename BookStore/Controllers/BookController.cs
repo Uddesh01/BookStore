@@ -44,32 +44,32 @@ namespace BookStore.Controllers
             return responce;
         }
 
-        //[HttpGet("GetAllBooks")]
-        //public ResponceModel<IEnumerable<BooksEntity>> GetAllBooks()
-        //{
-        //    ResponceModel<IEnumerable<BooksEntity>> responce = new ResponceModel<IEnumerable<BooksEntity>>();
+        [HttpGet("GetAllBooks")]
+        public ResponceModel<IEnumerable<BooksEntity>> GetAllBooks()
+        {
+            ResponceModel<IEnumerable<BooksEntity>> responce = new ResponceModel<IEnumerable<BooksEntity>>();
 
-        //    try
-        //    {
-        //        IEnumerable<BooksEntity> books = ibookBL.GetAllBooks();
-        //        if (books != null)
-        //        {
-        //            responce.Message = "succesfully get books details";
-        //            responce.Data = books;
-        //        }
-        //        else
-        //        {
-        //            responce.IsSuccess = false;
-        //            responce.Message = "Book not find";
-        //        }
+            try
+            {
+                IEnumerable<BooksEntity> books = ibookBL.GetAllBooks();
+                if (books != null)
+                {
+                    responce.Message = "succesfully get books details";
+                    responce.Data = books;
+                }
+                else
+                {
+                    responce.IsSuccess = false;
+                    responce.Message = "Book not find";
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        responce.IsSuccess = false;
-        //        responce.Message = ex.Message;
-        //    }
-        //    return responce;
-        //}
+            }
+            catch (Exception ex)
+            {
+                responce.IsSuccess = false;
+                responce.Message = ex.Message;
+            }
+            return responce;
+        }
     }
 }

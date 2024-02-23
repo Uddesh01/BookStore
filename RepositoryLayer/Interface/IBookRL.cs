@@ -10,6 +10,6 @@ namespace RepositoryLayer.Interface
     public  interface IBookRL
     {
         public BooksEntity GetBookById(long bookId);
-        //public IEnumerable<BooksEntity> GetAllBooks();
+        public IEnumerable<BooksEntity> GetAllBooks();
     }
 }

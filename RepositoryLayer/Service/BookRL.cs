@@ -20,9 +20,9 @@ namespace RepositoryLayer.Service
             BooksEntity book = dBContext.Books.Find(bookId);
             return book;
         }
-        //public IEnumerable<BooksEntity> GetAllBooks()
-        //{
-        //   return dBContext.Books;
-        //}
+        public IEnumerable<BooksEntity> GetAllBooks()
+        {
+           return dBContext.Books;
+        }
     }
 }
