@@ -16,6 +16,8 @@ builder.Services.AddTransient<IUserRL, UserRL>();
 builder.Services.AddTransient<IUserBL, UserBL>();
 builder.Services.AddTransient<IBookRL, BookRL>();
 builder.Services.AddTransient<IBookBL, BookBL>();
+builder.Services.AddTransient<IAdminRL, AdminRL>();
+builder.Services.AddTransient<IAdminBL, AdminBL>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
