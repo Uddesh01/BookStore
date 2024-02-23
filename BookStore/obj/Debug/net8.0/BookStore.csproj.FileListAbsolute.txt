@@ -141,3 +141,4 @@ C:\WebAPI\BookStore\BookStore\obj\Debug\net8.0\refint\BookStore.dll
 C:\WebAPI\BookStore\BookStore\obj\Debug\net8.0\BookStore.pdb
 C:\WebAPI\BookStore\BookStore\obj\Debug\net8.0\BookStore.genruntimeconfig.cache
 C:\WebAPI\BookStore\BookStore\obj\Debug\net8.0\ref\BookStore.dll
+C:\WebAPI\BookStore\BookStore\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
