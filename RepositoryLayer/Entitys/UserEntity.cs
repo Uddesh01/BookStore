@@ -17,6 +17,7 @@ namespace RepositoryLayer.Entitys
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string UserContact { get; set; }
+        public string City { get; set; }
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }
         public DateTime AddedOn { get; set; }
