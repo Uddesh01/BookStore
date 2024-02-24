@@ -12,8 +12,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(BookStoreDBContext))]
-    [Migration("20240224140949_OrderAndCarts")]
-    partial class OrderAndCarts
+    [Migration("20240224162430_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,6 +119,29 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("RepositoryLayer.Entitys.CartOrderEntity", b =>
+                {
+                    b.Property<long>("CartOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CartOrderId"));
+
+                    b.Property<long>("CartId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("CartOrderId");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("CartOrders");
+                });
+
             modelBuilder.Entity("RepositoryLayer.Entitys.OrderEntity", b =>
                 {
                     b.Property<long>("OrderID")
@@ -127,17 +150,11 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("OrderID"));
 
+                    b.Property<long>("CartId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("OrderAmount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<long>("UserID")
-                        .HasColumnType("bigint");
 
                     b.HasKey("OrderID");
 
@@ -189,6 +206,25 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RepositoryLayer.Entitys.CartOrderEntity", b =>
+                {
+                    b.HasOne("RepositoryLayer.Entitys.CartEntity", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RepositoryLayer.Entitys.OrderEntity", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Order");
                 });
 #pragma warning restore 612, 618
         }

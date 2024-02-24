@@ -28,6 +28,7 @@ namespace RepositoryLayer.Service
                 UserName = newUser.UserName,
                 UserContact = newUser.UserContact,
                 UserEmail = newUser.UserEmail,
+                City= newUser.City,
                 UserPassword = Convert.ToBase64String(encriptedPassword),
                 AddedOn = DateTime.UtcNow,
                 UpdatedOn = DateTime.UtcNow

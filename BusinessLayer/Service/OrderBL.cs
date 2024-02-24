@@ -1,19 +1,33 @@
-﻿using BusinessLayer.Interface;
-using RepositoryLayer.Entitys;
-using RepositoryLayer.Interface;
+﻿//using BusinessLayer.Interface;
+//using RepositoryLayer.Entitys;
+//using RepositoryLayer.Interface;
 
-namespace BusinessLayer.Service
-{
-    public class OrderBL : IOrderBL
-    {
-        private readonly IOrderRL iorderRL;
-        public OrderBL(IOrderRL orderRL)
-        {
-            iorderRL = orderRL;
-        }
-        OrderEntity IOrderBL.AddOrder(long bookId, int quantitys, long userId)
-        {
-            return iorderRL.AddOrder(bookId, quantitys, userId);
-        }
-    }
-}
+//namespace BusinessLayer.Service
+//{
+//    public class OrderBL : IOrderBL
+//    {
+//        private readonly IOrderRL iorderRL;
+//        public OrderBL(IOrderRL orderRL)
+//        {
+//            iorderRL = orderRL;
+//        }
+//        OrderEntity IOrderBL.AddOrder(long bookId, int quantitys, long userId)
+//        {
+//            return iorderRL.AddOrder(bookId, quantitys, userId);
+//        }
+//        public IEnumerable<OrderEntity> GetOrders(long userId)
+//        {
+//            return iorderRL.GetOrders(userId);
+//        }
+
+//        public OrderEntity GetOrderByOrderID(int orderId, int userId)
+//        {
+//            return iorderRL.GetOrderByOrderID(orderId, userId);
+//        }
+//        public bool RemoveOrder(int orderId, int userId)
+//        {
+//            return iorderRL.RemoveOrder(orderId, userId);
+//        }
+
+//    }
+//}

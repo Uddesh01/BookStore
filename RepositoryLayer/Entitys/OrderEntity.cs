@@ -8,16 +8,9 @@ namespace RepositoryLayer.Entitys
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long OrderID { get; set; }
-
-        [ForeignKey("Users")]
-        public long UserID { get; set; }
-        public int Quantity { get; set; }
         public DateTime CreatedAt { get; set; }
-        public int OrderAmount { get; set; }
-        [NotMapped]
-        public UserEntity User { get; set; }
-        [NotMapped]
-        public BooksEntity Book { get; set; }
+        [ForeignKey("Carts")]
+        public long CartId {  get; set; }
 
     }
 }

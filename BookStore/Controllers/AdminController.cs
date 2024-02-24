@@ -8,8 +8,6 @@ namespace BookStore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-    
     public class AdminController : ControllerBase
     {
         private readonly IAdminBL iadminBL;
@@ -45,7 +43,6 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("Login")]
-
         public ResponceModel<string> Login(string AdminEmail, string Password)
         {
             ResponceModel<string> responce = new ResponceModel<string>();

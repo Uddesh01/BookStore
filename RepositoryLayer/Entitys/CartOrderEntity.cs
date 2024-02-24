@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Entitys
 {
-    public class CartEntity
+    public class CartOrderEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long CartOrderId { get; set; }
         public long CartId { get; set; }
-        [ForeignKey("Users")]
-        public long UserId { get; set; }
-        [ForeignKey("Books")]
-        public long BookId {  get; set; }
-        public int Quantitys { get; set; }
-        public int Amount { get; set;}
-        public bool isOrdered { get; set; }
+        public long OrderId { get; set; }
+        public CartEntity Cart { get; set; }
+        public OrderEntity Order { get; set; }
+
     }
 }
