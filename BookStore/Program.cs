@@ -22,6 +22,8 @@ builder.Services.AddTransient<ICartRL, CartRL>();
 builder.Services.AddTransient<ICartBL, CartBL>();
 builder.Services.AddTransient<IOrderBL, OrderBL>();
 builder.Services.AddTransient<IOrderRL, OrderRL>();
+builder.Services.AddTransient<IWishListBL, WishListBL>();
+builder.Services.AddTransient<IWishListRL, WishListRL>();
 
 
 builder.Services.AddControllers();
