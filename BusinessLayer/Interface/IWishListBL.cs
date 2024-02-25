@@ -9,5 +9,6 @@ namespace BusinessLayer.Interface
     public interface IWishListBL
     {
       public bool  AddToWishList(long userId, long bookId);
+      public bool  RemoveFromWishList(long userId, long bookId);
     }
 }

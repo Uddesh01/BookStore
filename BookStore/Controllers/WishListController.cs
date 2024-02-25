@@ -48,5 +48,36 @@ namespace BookStore.Controllers
             return responce;
         }
 
+        [HttpPost("RemoveFromWishList")]
+        [Authorize]
+        public ResponceModel<bool> RemoveFromWishList(long bookId)
+        {
+            ResponceModel<bool> responce = new ResponceModel<bool>();
+            try
+            {
+                string userIdStr = User.FindFirstValue("UserId");
+                long userId = Convert.ToInt32(userIdStr);
+                bool removed = iwishListBL.RemoveFromWishList(userId, bookId);
+                if (removed)
+                {
+                    responce.Message = "Book removed from wishlist successfully";
+                    responce.Data = true;
+                }
+                else
+                {
+                    responce.IsSuccess = false;
+                    responce.Message = "Failed to remove book from wishlist";
+                    responce.Data = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                responce.Message = ex.Message;
+                responce.Data = false;
+                responce.IsSuccess = false;
+            }
+            return responce;
+        }
+
     }
 }

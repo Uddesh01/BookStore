@@ -20,5 +20,9 @@ namespace BusinessLayer.Service
         {
             return iwishListRL.AddToWishList(userId, bookId);
         }
+        public bool RemoveFromWishList(long userId, long bookId)
+        {
+            return iwishListRL.RemoveFromWishList(userId,bookId);
+        }
     }
 }

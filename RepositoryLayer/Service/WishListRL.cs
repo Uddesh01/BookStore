@@ -27,5 +27,17 @@ namespace RepositoryLayer.Service
             dbContext.SaveChanges();
             return true;
         }
+
+        public bool RemoveFromWishList(long userId, long bookId)
+        {
+            WishListEntity wishList = dbContext.WishLists.FirstOrDefault(w => w.UserId == userId && w.BookId == bookId);
+            if (wishList != null)
+            {
+                dbContext.WishLists.Remove(wishList);
+                dbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }
