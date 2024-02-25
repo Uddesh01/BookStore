@@ -20,6 +20,9 @@ builder.Services.AddTransient<IAdminRL, AdminRL>();
 builder.Services.AddTransient<IAdminBL, AdminBL>();
 builder.Services.AddTransient<ICartRL, CartRL>();
 builder.Services.AddTransient<ICartBL, CartBL>();
+builder.Services.AddTransient<IOrderBL, OrderBL>();
+builder.Services.AddTransient<IOrderRL, OrderRL>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

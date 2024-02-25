@@ -49,7 +49,7 @@ namespace BookStore.Controllers
             return responce;
         }
 
-        [HttpPost("RemoveCart")]
+        [HttpDelete ("RemoveCart")]
         [Authorize]
         public ResponceModel<string> RemoveCartByCartId(long CartId)
         {
@@ -105,6 +105,36 @@ namespace BookStore.Controllers
             }
             return responce;
         }
+
+        [HttpPut("UpdateCart")]
+        [Authorize]
+        public ResponceModel<CartEntity> UpdateCart(long cartId, int quantitys)
+        {
+            ResponceModel<CartEntity> responce = new ResponceModel<CartEntity>();
+            string userIdStr = User.FindFirstValue("UserId");
+            long userId = Convert.ToInt32(userIdStr);
+            try
+            {
+                CartEntity updatedCart = icartBL.UpdateCart(cartId, quantitys, userId);
+                if (updatedCart != null)
+                {
+                    responce.Message = "Successfully updated item in cart";
+                    responce.Data = updatedCart;
+                }
+                else
+                {
+                    responce.Message = "Unable to update item in cart";
+                    responce.IsSuccess = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                responce.IsSuccess = false;
+                responce.Message = ex.Message;
+            }
+            return responce;
+        }
+
 
     }
 }

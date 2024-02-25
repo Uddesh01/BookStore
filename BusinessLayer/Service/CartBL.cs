@@ -29,5 +29,10 @@ namespace BusinessLayer.Service
         {
             return  icartRL.GetAllCartByUserID(userId);
         }
+
+        public CartEntity UpdateCart(long cartId, int quantitys, long userId)
+        {
+            return icartRL.UpdateCart(cartId, quantitys, userId);
+        }
     }
 }

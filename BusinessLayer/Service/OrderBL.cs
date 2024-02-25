@@ -1,33 +1,32 @@
-﻿//using BusinessLayer.Interface;
-//using RepositoryLayer.Entitys;
-//using RepositoryLayer.Interface;
+﻿using BusinessLayer.Interface;
+using CommonLayer.Model;
+using RepositoryLayer.Entitys;
+using RepositoryLayer.Interface;
 
-//namespace BusinessLayer.Service
-//{
-//    public class OrderBL : IOrderBL
-//    {
-//        private readonly IOrderRL iorderRL;
-//        public OrderBL(IOrderRL orderRL)
-//        {
-//            iorderRL = orderRL;
-//        }
-//        OrderEntity IOrderBL.AddOrder(long bookId, int quantitys, long userId)
-//        {
-//            return iorderRL.AddOrder(bookId, quantitys, userId);
-//        }
-//        public IEnumerable<OrderEntity> GetOrders(long userId)
-//        {
-//            return iorderRL.GetOrders(userId);
-//        }
-
-//        public OrderEntity GetOrderByOrderID(int orderId, int userId)
-//        {
-//            return iorderRL.GetOrderByOrderID(orderId, userId);
-//        }
-//        public bool RemoveOrder(int orderId, int userId)
-//        {
-//            return iorderRL.RemoveOrder(orderId, userId);
-//        }
-
-//    }
-//}
+namespace BusinessLayer.Service
+{
+    public class OrderBL : IOrderBL
+    {
+        private readonly IOrderRL iorderRL;
+        public OrderBL(IOrderRL orderRL)
+        {
+            iorderRL = orderRL;
+        }
+        OrderSummary IOrderBL.AddOrder(long cartId, long userId)
+        {
+            return iorderRL.AddOrder(cartId, userId);
+        }
+        IEnumerable<OrderSummary> IOrderBL.GetAllOrdersDetails(long userId)
+        {
+            return iorderRL.GetAllOrdersDetails(userId);
+        }
+        public bool RemoveOrder(long orderId)
+        {
+            return iorderRL.RemoveOrder(orderId);
+        }
+        public OrderSummary GetOrderByOrderId(long orderId)
+        {
+            return iorderRL.GetOrderByOrderId(orderId);
+        }
+    }
+}
