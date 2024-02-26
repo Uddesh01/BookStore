@@ -1,9 +1,6 @@
 ﻿using CommonLayer.Model;
 using RepositoryLayer.Entitys;
 using RepositoryLayer.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RepositoryLayer.Service
 {
@@ -13,37 +10,63 @@ namespace RepositoryLayer.Service
 
         public OrderRL(BookStoreDBContext dbContext, IBookRL bookRL)
         {
-            this.dbContext = dbContext;        
+            this.dbContext = dbContext;
         }
 
         public OrderSummary AddOrder(long cartId, long userId)
         {
-            CartEntity cart = dbContext.Carts.FirstOrDefault(c => c.CartId == cartId && c.UserId == userId);
+            CartEntity cart = dbContext.Carts.FirstOrDefault(c => c.CartId == cartId && c.UserId == userId && c.isOrdered == false);
             if (cart != null)
             {
-                OrderEntity newOrder = new OrderEntity
-                {
-                    CreatedAt = DateTime.UtcNow,
-                    CartId = cartId
-                };
-                dbContext.Add(newOrder);
-                dbContext.SaveChanges();
 
-                cart.isOrdered = true;
-                dbContext.Carts.Update(cart);
-                dbContext.SaveChanges();
-
-                OrderSummary orderSummary = new OrderSummary
+                BooksEntity book = dbContext.Books.FirstOrDefault(b => b.Book_ID == cart.BookId);
+                if (book != null)
                 {
-                    OrderId = newOrder.OrderID,
-                    BookId = cart.BookId,
-                    Quantitys = cart.Quantitys,
-                    Amount = cart.Amount,
-                    CreatedAt = newOrder.CreatedAt
-                };
-                return orderSummary;
+
+                    if (book.Quantity >= cart.Quantitys)
+                    {
+
+                        OrderEntity newOrder = new OrderEntity
+                        {
+                            CreatedAt = DateTime.UtcNow,
+                            CartId = cartId
+                        };
+                        dbContext.Add(newOrder);
+                        dbContext.SaveChanges();
+
+                        cart.isOrdered = true;
+                        dbContext.Carts.Update(cart);
+
+                        book.Quantity -= cart.Quantitys;
+                        dbContext.Books.Update(book);
+
+
+                        dbContext.SaveChanges();
+
+                        OrderSummary orderSummary = new OrderSummary
+                        {
+                            OrderId = newOrder.OrderID,
+                            BookId = cart.BookId,
+                            Quantitys = cart.Quantitys,
+                            Amount = cart.Amount,
+                            CreatedAt = newOrder.CreatedAt
+                        };
+                        return orderSummary;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Insufficient quantity available for the book.");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Book associated with the cart not found.");
+                }
             }
-            return null;
+            else
+            {
+                throw new ArgumentException("Cart not found for the specified user.");
+            }
         }
 
         public IEnumerable<OrderSummary> GetAllOrdersDetails(long userId)
